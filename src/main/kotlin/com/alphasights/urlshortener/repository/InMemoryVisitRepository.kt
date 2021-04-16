@@ -8,7 +8,8 @@ class InMemoryVisitRepository : VisitRepository {
 
     val visits = mutableMapOf<String, Visit>()
 
-    override fun save(visit: Visit) {
+    override fun save(visit: Visit): Visit {
         visits[visit.id] = visit
+        return visit
     }
 }

@@ -1,15 +1,19 @@
 package com.alphasights.urlshortener.domain
 
-/**
- *   @author Juliano Silva
- */
-class Url private constructor(val originalUrl: String,
-                              val hash: String) {
+class Url private constructor(
+    val originalUrl: String,
+    val hash: String
+) {
 
     companion object {
         fun create(originalUrl: String): Url {
-            return Url(originalUrl,
-                    TokenGenerator.generate(originalUrl))
+            val url = Url(
+                originalUrl,
+                DomainRegistry.tokenGenerator.generate(originalUrl)
+            )
+            return DomainRegistry.urls.save(url)
         }
+
+        fun findByHash(hash: String) = DomainRegistry.urls.findByHash(hash)
     }
 }

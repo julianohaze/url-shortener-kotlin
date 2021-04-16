@@ -2,16 +2,19 @@ package com.alphasights.urlshortener.domain
 
 import java.util.*
 
-/**
- *   @author Juliano Silva
- */
-class Visit private constructor(val id: String,
-                                private val url: Url) {
+class Visit private constructor(
+    val id: String,
+    private val url: Url
+) {
 
     companion object {
-        fun createFor(url: Url) = Visit(
+        fun createFor(url: Url): Visit {
+            val visit = Visit(
                 id = UUID.randomUUID().toString(),
-                url = url)
+                url = url
+            )
+            return DomainRegistry.visits.save(visit)
+        }
     }
 
     fun destination() = url.originalUrl
