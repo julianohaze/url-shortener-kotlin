@@ -3,10 +3,6 @@ package com.alphasights.urlshortener.domain
 import java.lang.Long.toHexString
 import java.util.zip.Adler32
 
-
-/**
- *   @author Juliano Silva
- */
 class TokenGenerator {
 
     companion object {

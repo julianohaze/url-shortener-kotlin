@@ -5,12 +5,11 @@ import com.alphasights.urlshortener.exception.NotFoundException
 import com.alphasights.urlshortener.repository.VisitRepository
 import org.springframework.stereotype.Service
 
-/**
- *   @author Juliano Silva
- */
 @Service
-class VisitService(val urlService: UrlService,
-                   val visitRepository: VisitRepository) {
+class VisitService(
+    val urlService: UrlService,
+    val visitRepository: VisitRepository
+) {
 
     fun visit(hash: String): Visit {
         val url = urlService.findByHash(hash) ?: throw NotFoundException()

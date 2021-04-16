@@ -7,16 +7,13 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-/**
- *   @author Juliano Silva
- */
 @RestController
-@RequestMapping("/api/url")
+@RequestMapping("/api/urls")
 class UrlController(val urlService: UrlService) {
 
     @PostMapping
     fun createUrl(@RequestBody request: CreateUrlRequest): String {
-        val url = urlService.create(request.url);
-        return url.hash;
+        val url = urlService.create(request.url)
+        return url.hash
     }
 }

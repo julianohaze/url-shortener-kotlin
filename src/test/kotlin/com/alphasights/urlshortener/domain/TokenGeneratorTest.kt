@@ -2,9 +2,6 @@ package com.alphasights.urlshortener.domain
 
 import org.junit.Test
 
-/**
- *   @author Juliano Silva
- */
 class TokenGeneratorTest {
 
     @Test
